@@ -1,0 +1,24 @@
+
+import java.util.Scanner; 
+ 
+ import java.lang.String; 
+ 
+ public class Nou {   
+	 private static Scanner dis;          
+	 public static void main(String args[])     
+	 {              
+		 dis=new Scanner(System.in);
+		 int a,b,t;
+		 System.out.print("Dati prima valoare:");
+		 a=dis.nextInt();
+		 System.out.print("Dati a doua  valoarea:");
+		 b=dis.nextInt();
+		while(b!=0) {
+			t=b;
+			b=a%b;
+			a=t;
+		}
+		 System.out.print("CMMDC:");
+		 System.out.print(a);
+	 } 
+	 } 

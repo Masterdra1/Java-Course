@@ -1,0 +1,29 @@
+
+import java.util.Scanner; 
+ 
+ import java.lang.String; 
+ 
+ public class Nou {   
+	 private static Scanner dis;  
+	private static int prim(int a) {
+			int ok=1;
+			for(int i=2;i<a;i++) {
+				if(a%i==0)ok=0;
+			}
+			return ok;
+		 }
+	 public static void main(String args[])     
+	 {         
+		 
+		 dis=new Scanner(System.in);
+		 int a,b;
+		 System.out.print("Cate valori introduceti:");
+		 a=dis.nextInt();
+		
+		for(int i=0;i<a;i++) {
+			b=dis.nextInt();
+			if(prim(b)==1) System.out.print(b+ " este prim");
+		}
+		
+	 } 
+	 } 

@@ -1,0 +1,19 @@
+
+import java.util.Scanner; 
+ 
+ import java.lang.String; 
+ 
+ public class Nou {   
+	 private static Scanner dis;          
+	 public static void main(String args[])     
+	 {              
+		 dis=new Scanner(System.in);
+		 int a,F=1;
+		 System.out.print("Dati valoarea:");
+		 a=dis.nextInt();
+		 for(int i=2;i<=a;i++) {
+			 F*=i;
+		 }
+		 System.out.print(F);
+	 } 
+	 } 
