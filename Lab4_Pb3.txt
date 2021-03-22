@@ -1,0 +1,63 @@
+import java.lang.String;
+import java.util.Locale;
+import java.util.Random;
+import java.lang.Object;
+
+public class X {
+	 int linii;
+	 int coloane;
+	int mat[][]=new int [linii][coloane];
+	int getLinii() {
+		return linii;
+	}
+	void setLinii(int linii) {
+		this.linii=linii;
+	}
+	int getColoane() {
+		return coloane;
+	}
+	void setColoane(int coloane) {
+		this.coloane=coloane;
+	}
+	void setMat(int[][] mat) {
+		this.mat=mat;
+	}
+	void afisareMat() {
+		for(int i=0;i<linii;i++) {
+			for(int j=0;j<coloane;j++)System.out.print(mat[i][j]+" ");
+		}
+		System.out.println();
+	}
+	int numarareGrupuri(int limita) {
+		int nrG=0;
+		double limi=limita-0.05*limita;
+		double lims=limita+0.05*limita;
+		for(int i=1;i<linii-1;i++) {
+			for(int j=1;j<coloane-1;j++) {
+				if(mat[i][j]>limi&&mat[i+1][j]>limi&&mat[i+1][j+1]>limi&&mat[i+1][j-1]>limi&&mat[i][j-1]>limi&&mat[i][j+1]>limi&&mat[i-1][j-1]>limi&&mat[i-1][j]>limi&&mat[i-1][j-1]>limi&&
+						mat[i][j]<lims&&mat[i+1][j]<lims&&mat[i+1][j+1]<lims&&mat[i+1][j-1]<lims&&mat[i][j-1]<lims&&mat[i][j+1]<lims&&mat[i-1][j-1]<lims&&mat[i-1][j]<lims&&mat[i-1][j-1]<lims)nrG++;
+			}
+		}
+		
+		return nrG;
+	}
+	
+
+}
+import java.lang.String;
+import java.util.Locale;
+import java.util.Random;
+import java.lang.Object;
+import java.util.Scanner;
+public class Main1 {
+	public static void main(String[] args) {
+		Scanner dis=new Scanner(System.in);
+		int [][]m= {{5,5,5,7},{5,5,5,4},{5,5,5,2},{9,55,3,2}};
+		X ob1=new X();
+		ob1.setColoane(4);
+		ob1.setLinii(4);
+		ob1.setMat(m);
+		System.out.println(ob1.numarareGrupuri(5));
+	}
+}
+

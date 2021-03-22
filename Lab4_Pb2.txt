@@ -1,0 +1,63 @@
+import java.lang.String;
+import java.util.Locale;
+import java.util.Random;
+import java.lang.Object;
+
+public class X {
+	private char s[]=new char[20];
+	protected String sir=new String();
+	int nr;
+	X(char s[],String sir,int nr){
+		this.s=s;
+		this.sir=sir;
+		this.nr=nr;
+	}
+	char[] getS() {
+		return s;
+	}
+	String getSir() {
+		return sir;
+	}
+	int getNr() {
+		return nr;
+	}
+	void setS(char s[]) {
+		this.s=s;
+	}
+	void setSir(String sir) {
+		this.sir=sir;
+	}
+	void setNr(int nr) {
+		this.nr=nr;
+	}
+	public void finalize() {
+		System.out.println("Obiectul s-a distrus!");
+	}
+	
+	
+	
+
+}
+import java.lang.String;
+import java.util.Locale;
+import java.util.Random;
+import java.lang.Object;
+public class Main1 {
+	public static void main(String[] args) {
+		char s[]= {'a','s','g'};
+		char s1[]= {'p','i','t'};
+		String sir=new String("Jardon");
+		X ob1=new X(s,sir,9);
+		System.out.println(ob1.getNr());
+		System.out.println(ob1.getS());
+		System.out.println(ob1.getSir());
+		ob1.finalize();
+		X ob2=new X(s,sir,55);
+		ob2.setS(s1);
+		ob2.setNr(888);
+		System.out.println(ob2.getNr());
+		System.out.println(ob2.getS());
+		System.out.println(ob2.getSir());
+		
+	}
+}

@@ -1,0 +1,24 @@
+import java.lang.String;
+import java.util.Locale;
+import java.util.Random;
+import java.lang.Object;
+import java.util.Scanner;
+public class Main1 {
+	public static void main(String[] args) {
+		Scanner dis=new Scanner(System.in);
+		String ob1=new String("Ana are mere.");
+		String ob2=new String("Ana are mere.");
+		String ob3=new String("hfsahsd");
+		String ob4,ob5;
+		ob4=ob1.repeat(5);
+		System.out.println(ob4);
+		ob5=ob1.replace('a', 'p');
+		System.out.println(ob5);
+		ob5=ob1.stripLeading();
+		ob5.toUpperCase();
+		System.out.println(ob5);
+		if(ob1.equals(ob2))System.out.println("Sunt egale.");
+		else System.out.print("Nu sunt la fel.");
+		
+	}
+}

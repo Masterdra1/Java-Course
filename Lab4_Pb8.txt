@@ -1,0 +1,35 @@
+import java.lang.String;
+import java.util.Locale;
+import java.util.Random;
+import java.lang.Object;
+import java.util.Scanner;
+public class Main1 {
+	public static void main(String[] args) {
+		Random rand=new Random();
+		Scanner dis=new Scanner(System.in);
+		String par=new String();
+		char sir[];
+		par=dis.next();
+		boolean ok=true;
+		boolean car=true;
+		int nr=0;
+		int lit=0;
+		int desp=0;
+		sir=new char[par.length()];
+		sir=par.toCharArray();
+		if(sir[5]=='-'&&sir[11]=='-'&&sir[17]=='-'&&sir.length==23)//&&sir.length==24
+		{		for(int i=0;i<23;i++) {
+			
+				if(sir[i]>='0'&&sir[i]<='9') nr++;
+				if(sir[i]>='a'&&sir[i]<='z') lit++;
+				if(sir[i]>='A'&&sir[i]<='Z') lit++;
+				if(sir[i]=='-')desp++;	
+		}
+		if (desp!=3)ok=false;
+		}
+		else ok=false;
+		if(ok==true&&nr>lit&&lit!=0)System.out.print("CHeia de autentificare este corecta");
+		else System.out.println("Cheia de autentificare este gresita!");
+		
+	}
+}

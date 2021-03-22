@@ -1,0 +1,166 @@
+import java.lang.String;
+import java.util.Locale;
+import java.util.Random;
+import java.lang.Object;
+import java.util.Scanner;
+import java.util.Date;
+public class Cerc {
+	private int culoare;
+	private float raza;
+	private int x;
+	private int y;
+	int T,R,G,B;
+	Cerc(int x,int y,float raza,int T,int R,int G,int B){
+		this.x=x;
+		this.y=y;
+		this.raza=raza;
+		culoare=((((T<<8)+R)<<8+G)<<8+B);
+	}
+	Cerc(){
+		x=0;
+		y=0;
+		culoare=0;
+		raza=0;
+	}
+	void setX(int x) {
+		this.x=x;
+	}
+	void setY(int y) {
+		this.y=y;
+	}
+	void setRaza(float raza) {
+		this.raza=raza;
+	}
+	void setT(int T) {
+		this.T=T;
+		int c=culoare&0x00ffffff;
+		culoare=c+T<<24;
+	}
+	void setR(int R ) {
+		this.R=R;
+		int c=culoare&0xff00ffff;
+		culoare=c+R<<16;
+	}
+	void setG(int G ) {
+		this.G=G;
+		int c=culoare&0xffff00ff;
+		culoare=c+G<<8;
+	}
+	void setB(int B ) {
+		this.B=B;
+		int c=culoare&0xffffff00;
+		culoare=c+B;
+	}
+	int getX() {
+		return x;
+	}
+	int getY() {
+		return y;
+	}
+	int getT() {
+		return T;
+	}
+	int getR() {
+		return R;
+	}
+	int getG() {
+		return G;
+	}
+	int getB() {
+		return B;
+	}
+	float getRaza() {
+		return raza;
+	}
+	void Afisare() {
+		System.out.println("Coordonatele sunt:"+x+" "+y);
+		System.out.println("Raza: "+raza);
+		System.out.println("Culoarea in functie de T R G B"+T+" "+R+" "+G+" "+B);
+		System.out.println("Culoarea "+culoare);
+	}
+}
+import java.lang.String;
+
+import java.util.Random;
+import java.util.Scanner;
+import java.util.Arrays;
+import java.util.StringTokenizer;
+
+
+public class Main1 {
+	public static void centru(Cerc tab[]) {
+		for(int i=0;i<tab.length;i++) {
+			if(tab[i].getX()!=0&&tab[i].getY()!=0)tab[i].Afisare();;
+		}
+	}
+	public static void inCadran(Cerc tab[]) {
+		for(int i=0;i<tab.length;i++) {
+			if(((tab[i].getX()-tab[i].getRaza())>0)&&((tab[i].getY()-tab[i].getRaza())>0))tab[i].Afisare();
+		}
+	}
+	public static void cercuri(Cerc tab[]) {
+		int verif[]=new int[tab.length];
+		for(int i=0;i<tab.length;i++)verif[i]=i;
+		System.out.println("Aceeasi verticala");
+		for(int i=0;i<tab.length;i++) {
+			for(int j=i;j<tab.length;j++)if(tab[i].getX()==tab[j].getX()&&verif[j]>0) {tab[j].Afisare();
+			verif[j]=-1;}
+		}
+		System.out.println("Aceeasi orizontala");
+		for(int i=0;i<tab.length;i++)verif[i]=i;
+		for(int i=0;i<tab.length;i++) {
+			for(int j=i;j<tab.length;j++)if(tab[i].getY()==tab[j].getY()&&verif[j]>0) {tab[j].Afisare();
+			verif[j]=-1;}
+		}
+	}
+	public static void Culori(Cerc tab[],int limi,int lims) {
+		for(int i=0;i<tab.length;i++) {
+			if(tab[i].getB()>limi&&tab[i].getG()>limi&&tab[i].getR()>limi&&tab[i].getB()<lims&&tab[i].getG()<lims&&tab[i].getR()<lims)tab[i].Afisare();
+		}
+	}
+	
+	public static void main(String[] args) {
+		Random rand=new Random();
+		Scanner dis=new Scanner(System.in);
+		
+		int n;
+		System.out.print("Dati numarul de obiecte:");
+		n=dis.nextInt();
+		Cerc cerc[];
+		int x,y,t,g,b,r;
+		float raza;
+		cerc=new Cerc[n];
+		for(int i=0;i<n;i++)cerc[i]=new Cerc();
+		for(int i=0;i<n;i++) {
+			System.out.print("X:");
+			x=dis.nextInt();
+			cerc[i].setX(x);
+			System.out.print("Y:");
+			cerc[i].setY(dis.nextInt());
+			System.out.print("Raza:");
+			cerc[i].setRaza(Float.parseFloat(dis.next()));
+			System.out.print("T:");
+				cerc[i].setT(dis.nextInt());
+			System.out.print("R:");
+				cerc[i].setR(dis.nextInt());
+			System.out.print("G:");
+				cerc[i].setG(dis.nextInt());
+			System.out.print("B:");
+				cerc[i].setB(dis.nextInt());
+			
+			
+		}
+		System.out.println("Cercuri cu centru intr-un cadran:");
+		centru(cerc);
+		System.out.println("Cercuri cuprinse intr-un cadran");
+		inCadran(cerc);
+		System.out.println("Cercuri pe aceeasi dreapta oriz/vert");
+		cercuri(cerc);
+		System.out.print("Dati limitele pentru R,G,B");
+		Culori(cerc,dis.nextInt(),dis.nextInt());
+		
+			
+	}
+
+	
+}

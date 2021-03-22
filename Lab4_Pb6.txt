@@ -1,0 +1,22 @@
+import java.lang.String;
+import java.util.Locale;
+import java.util.Random;
+import java.lang.Object;
+import java.util.Scanner;
+public class Main1 {
+	public static void main(String[] args) {
+		Random rand=new Random();
+		Scanner dis=new Scanner(System.in);
+		int n;
+		char sir[],sir1[];
+		n=dis.nextInt();
+		sir=new char[n];
+		sir1=new char[n];
+		for(int i=0;i<n;i++)sir[i]=(char) rand.nextInt(100);
+		sir.toString();
+		System.out.println(sir);
+		for(int i=0;i<n;i++)if(sir[i]>'0'&&sir[i]<'9')sir[i]='*';
+		System.out.println(sir);
+		
+	}
+}

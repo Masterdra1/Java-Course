@@ -1,0 +1,69 @@
+
+public class Persoane {
+	private String name=new String();
+	private float latitudine;
+	private float longitudine;
+	Persoane(){
+		name=null;
+		latitudine=0;
+		longitudine=0;
+	}
+	public void finalize() {
+		System.out.println("Obiectul a fost distrus!");
+	}
+	float getLatitudine() {
+		return latitudine;
+	}
+	float getLongitudine() {
+		return longitudine;
+	}
+	String getName() {
+		return name;
+	}
+	void setLatitudine(float latitudine) {
+		this.latitudine=latitudine;
+	}
+	void setLongitudine(float longitudine) {
+		this.longitudine=longitudine;
+	}
+	void setName(String name) {
+		this.name=name;
+	}
+	 
+	
+	
+
+}
+import java.lang.String;
+import java.util.Locale;
+import java.util.Random;
+import java.lang.Object;
+import java.util.Scanner;
+public class Main1 {
+	public static void main(String[] args) {
+		Scanner dis=new Scanner(System.in);
+		Persoane tab[];
+		int n;
+		n=dis.nextInt();
+		tab=new Persoane[n];
+		for(int i=0;i<n;i++)tab[i]=new Persoane();
+		for(int i=0;i<n;i++) {
+			System.out.print("Dati numele:");
+			tab[i].setName(dis.next());
+			System.out.print("Dati latitudinea:");
+			tab[i].setLatitudine(dis.nextFloat());
+			System.out.print("Dati longitudinea:");
+			tab[i].setLongitudine(dis.nextFloat());
+			
+		}
+		for(int i=0;i<n;i++) {
+			System.out.println("Persoana "+(i+1));
+			System.out.println(tab[i].getName());
+			System.out.println(tab[i].getLatitudine());
+			System.out.println(tab[i].getLongitudine());
+		}
+		
+		
+	}
+}
+

@@ -1,0 +1,95 @@
+import java.lang.String;
+import java.util.Locale;
+import java.util.Random;
+import java.lang.Object;
+import java.util.Scanner;
+import java.util.Date;
+public class Student {
+	String nume;
+	String nrTel;
+	int media;
+	Student(String nume,String nrTel,int media){
+		this.nrTel=nrTel;
+		this.nume=nume;
+		this.media=media;
+	}
+	void setNume(String nume) {
+		this.nume=nume;
+	}
+	void setNrTel(String nrTel) {
+		this.nrTel=nrTel;
+	}
+	void setMedia(int media) {
+		this.media=media;
+	}
+	String getNume() {
+		return nume;
+	}
+	String getNrTel() {
+		return nrTel;
+	}
+	int getMedia() {
+		return media;
+	}
+	boolean verficareNrTel() {
+		boolean ok=true;
+		char sir[];
+		int n=0;
+		sir=new char[nrTel.length()];
+		sir=nrTel.toCharArray();
+		for(int i=0;i<sir.length;i++) {
+			if((int)sir[i]<'0'&&(int)sir[i]>'9'&&sir[i]!=' '&&sir[i]!='.'&&sir[i]!='-')ok=false;
+			if((int)sir[i]>=48&&(int)sir[i]<=57)n++;
+			if(n!=0)ok=false;
+		}
+		return ok;
+	}
+}
+import java.lang.String;
+import java.util.Random;
+import java.util.Scanner;
+import java.util.Arrays;
+import java.util.StringTokenizer;
+public class Main1 {
+	public static void main(String[] args) {
+		Random rand=new Random();
+		Scanner dis=new Scanner(System.in);
+		Student tab[];
+		int n,k=0;
+		n=dis.nextInt();
+		tab=new Student[n];
+		for(int i=0;i<n;i++)tab[i]=new Student(" "," ",0);
+		for(int i=0;i<=n+k;i++) {
+			StringTokenizer st=new StringTokenizer(dis.nextLine(),"^^^");
+			String si[];
+			si=new String[4];
+			si[0]=new String();
+			si[1]=new String();
+			si[2]=new String();
+			
+			int j=0;
+			while(st.hasMoreTokens()) {
+				si[j]=st.nextToken();
+				j++;
+				}
+			tab[i].setNume(si[0]);
+			tab[i].setNrTel(si[1]);
+			if(tab[i].verficareNrTel()==false) {System.out.print("Numarul nu este bun.Reincercati.");k++;}
+			//int med=Integer.parseInt(si[2]);
+			tab[i].setMedia(Integer.parseInt(si[2]));
+		}
+		System.out.println("Studentii ordonati dupa numa:");
+		Arrays.sort(tab,(a,b)-> a.getNume().compareToIgnoreCase(b.getNume()));
+		for (int i = 0; i < n; i++) {
+			System.out.println(tab[i]);
+		}
+		System.out.println("Studentii ordonati dupa medie:");
+		Arrays.sort(tab,(a,b)-> Integer.compare(a.getMedia(), b.getMedia()));
+		for (int i = 0; i < n; i++) {
+				System.out.println(tab[i]);
+		}
+			
+	}
+
+	
+}

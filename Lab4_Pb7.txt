@@ -1,0 +1,194 @@
+import java.lang.String;
+import java.util.Locale;
+import java.util.Random;
+import java.lang.Object;
+import java.util.Scanner;
+import java.util.Date;
+public class Copil {
+	String nume=new String();
+	int luna=0;
+	int an=0;
+	int zi=0;
+	String getNume() {
+		return nume;
+	}
+	int getLuna() {
+		return luna;
+	}
+	int getZi() {
+		return zi;
+	}
+	int getAn() {
+		return an;
+	}
+	void setNume(String nume) {
+		this.nume=nume;
+	}
+	void setAn(int an) {
+		this.an=an;
+	}
+	void setLuna(int luna) {
+		this.luna=luna;
+	}
+	void setZi(int zi) {
+		this.zi=zi;
+	}
+	void prezentare() {
+		System.out.println("Salut,numele meu este "+ nume);
+	}
+	
+	void varstaMeaEste() {
+		int varsta=0;
+		varsta=2020-this.an;
+		System.out.println("Am "+varsta+" ani!");
+	}
+	void adunare(int X,int Y) {
+		int Z=0;
+		Z=X+Y;
+		System.out.println("Suma lui "+X+" si "+Y+" este "+Z);		
+	}
+	void alfabetDirect() {
+		for(int i=65;i<=90;i++) System.out.print((char)i+" ");
+		System.out.println();
+	}
+	void alfabetIndirect() {
+		for(int i=90;i>=65;i--) System.out.print((char)i+" ");
+		System.out.println();
+
+	}
+	void laRevedere() {
+		System.out.println("La revedere!");
+	}
+	void colorareTabla(int linii,int coloane) {
+		for(int i=0;i<linii;i++) {
+			for(int j=0;j<coloane;j++) {
+				if((i*coloane+j)%2==0)System.out.print(" 1 ");
+				else System.out.print(" 0 ");
+			}
+			System.out.println();
+		}
+	}
+	public static int checkAv(int pos[], int posI, int posJ) {
+		
+		if (pos[3*posI+posJ] < 0) {
+			return 0;
+		} else {
+			return 1;
+		}
+		
+	}
+	public static int Verificare(char m[][]) {
+		int ok=0,s=0;
+		if(m[0][1]==m[0][0]&&m[0][0]==m[0][2]&&m[0][1]!='*'&&m[0][0]!='*'&&m[0][2]!='*')ok=1;
+		if(m[1][0]==m[1][1]&&m[1][0]==m[1][2]&&m[1][0]!='*'&&m[1][1]!='*'&&m[1][2]!='*')ok=1;
+		if(m[2][0]==m[2][1]&&m[2][0]==m[2][2]&&m[2][0]!='*'&&m[2][1]!='*'&&m[2][2]!='*')ok=1;
+		if(m[0][0]==m[1][0]&&m[0][0]==m[2][0]&&m[0][0]!='*'&&m[1][0]!='*'&&m[2][0]!='*')ok=1;
+		if(m[0][1]==m[1][1]&&m[0][1]==m[2][1]&&m[0][1]!='*'&&m[1][1]!='*'&&m[2][1]!='*')ok=1;
+		if(m[0][2]==m[1][2]&&m[0][2]==m[2][2]&&m[0][2]!='*'&&m[1][2]!='*'&&m[2][2]!='*')ok=1;
+		if(m[0][0]==m[1][1]&&m[0][0]==m[2][2]&&m[1][1]!='*'&&m[0][0]!='*'&&m[2][2]!='*')ok=1;
+		if(m[0][2]==m[1][1]&&m[0][2]==m[2][1]&&m[1][1]!='*'&&m[2][1]!='*'&&m[0][2]!='*')ok=1;
+		for(int i=0;i<3;i++) {
+			for(int j=0;j<3;j++)if(m[i][j]=='*')s++;
+		}
+		if(s==0)ok=1;
+		return ok;
+	}
+	
+	public static void showTable(char table[][]) {
+		
+		for (int i = 0; i < 3; i++) {
+			for (int j = 0; j < 3; j++) {
+				System.out.print(table[i][j] + " ");
+			}
+			System.out.println();
+		}
+		
+		System.out.println("------------");
+		
+	}
+	void X0(){
+		
+		
+
+		  
+			
+			 Random rand = new Random();
+			 
+			 int pos[] = new int[9];
+			 int positionI, positionJ;
+			 
+			 for (int i = 0; i < 9; i++) {
+				 pos[i] = i;
+			 }
+			 
+			 char table[][] = new char[3][];
+			 for(int i=0;i<3;i++)table[i]=new char[3];
+			 
+			 for (int i = 0; i < 3; i++) {
+				 for (int j = 0; j < 3; j++) {
+					 table[i][j] = '*';
+				 }
+			 }
+			 
+			 showTable(table);
+			 
+			 char val[] = new char[2];
+			 
+			 val[0] = 'X';
+			 val[1] = '0';
+			 char aux;
+			 for (int i=1;i<100;i++) {
+				 
+				 positionI = rand.nextInt(3);
+				 positionJ = rand.nextInt(3);
+				 
+				 if(Verificare(table)==0) {
+					 if(checkAv(pos, positionI, positionJ) == 1) {
+					 pos[3 * positionI + positionJ] = -1;
+					 
+					if(i%2==1) table[positionI][positionJ] = val[0];
+						else  table[positionI][positionJ] = val[1];
+					 showTable(table);
+					 }else
+					 {
+						 aux=val[0];
+						 val[0]=val[1];
+						 val[1]=aux;
+					 }
+				 }else {
+					 System.out.print("Jocul s-a terminat!");
+				 break;}
+				 
+		 } 
+		
+		}
+
+}
+
+import java.lang.String;
+import java.util.Locale;
+import java.util.Random;
+import java.lang.Object;
+import java.util.Scanner;
+public class Main1 {
+	public static void main(String[] args) {
+	
+		Scanner dis=new Scanner(System.in);
+	
+		Copil ob=new Copil();
+		ob.setAn(2003);
+		ob.setLuna(5);
+		ob.setZi(12);
+		ob.setNume("Andrei");
+		ob.prezentare();
+		ob.varstaMeaEste();
+		ob.adunare(6, 8);
+		ob.alfabetDirect();
+		ob.alfabetIndirect();
+		ob.laRevedere();
+		ob.colorareTabla(2, 3);
+		ob.X0();
+	}
+}
+
+	
