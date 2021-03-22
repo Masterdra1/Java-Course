@@ -1,0 +1,71 @@
+import java.util.Arrays;
+import java.lang.Object;
+import java.lang.System;
+import java.util.Scanner; 
+import java.lang.Math; 
+import java.util.Random;
+ 
+ import java.lang.String; 
+ 
+ public class Nou {    
+	public static void afisare(int mat[][],int m) {
+		int i=0,j=0,n=0;
+		for(i=0;i<m;i++) {
+			 for(j=0;j<=n;j++)System.out.print(mat[i][j]+" ");
+			 System.out.print("\n");
+			 n++;
+		 }
+		System.out.print("\n");
+		for(i=0;i<m;i++) {
+			for(j=i;j<m;j++)System.out.print(mat[j][i]+" ");
+			System.out.print("\n");
+		}
+	}
+	public static void eliminare(int mat[][],int m,int li,int ls) {
+		int i=0,j=0,n=0;
+		for(i=0;i<m;i++) {
+			 for(j=0;j<=n;j++)if(mat[i][j]<li||mat[i][j]>ls)mat[i][j]=0;
+		n++;
+		}
+	}
+	public static void Vecini(int mat[][],int m,int i1,int j1) {
+		int i=0,j=0,n=0;
+		for(i=0;i<m;i++) {
+			 for(j=i+1;j<m;j++)mat[i][j]=-1;
+		}
+		if(mat[i1-1][j1]!=-1)System.out.println(mat[i1-1][j1]);
+		if(mat[i1+1][j1]!=-1)System.out.println(mat[i1+1][j1]);
+		if(mat[i1][j1+1]!=-1)System.out.println(mat[i1][j1+1]);
+		if(mat[i1][j1-1]!=-1)System.out.println(mat[i1][j1-1]);
+	}
+	 public static void main(String args[])     
+	 {   
+		 Scanner scan=new Scanner(System.in);
+		 int m,i=0,j=0,n=0,a[][];
+		 System.out.println("Dati numarul de linii:");
+		 m=scan.nextInt();
+		 a=new int[m][m];
+		 System.out.println("Dati elementele:");
+		 for(i=0;i<m;i++) {
+			 for(j=0;j<=n;j++)a[i][j]=scan.nextInt();
+			 n++;
+		 }
+		 int lim1,lim2;
+		 System.out.println("Dati limitele:");
+		 lim1=scan.nextInt();
+		 lim2=scan.nextInt();
+		 
+		 afisare(a,m);
+		 eliminare(a,m,lim1,lim2);
+		 afisare(a,m);
+		 int l,l1;
+		 l=scan.nextInt();
+		 l1=scan.nextInt();
+		 Vecini(a,m,l,l1);
+		 
+		 
+
+		 
+	 } 
+ 
+ }  

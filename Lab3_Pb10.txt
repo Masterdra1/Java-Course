@@ -1,0 +1,59 @@
+import java.util.Scanner;
+import java.lang.String;
+import java.util.Arrays;
+import java.util.Random;
+public class Lab3_1 {
+	
+	private static Scanner dis;
+
+	 public static void main(String[ ] args) {        
+		 
+		 dis = new Scanner(System.in);
+		 Random rand = new Random();
+		 
+		 String A, B;
+		 
+		 char  a[], b[];
+		 
+		 A = dis.next();
+		 B = dis.next();
+		 
+		 a = new char[A.length()];
+		 b = new char[B.length()];
+		 
+		 a =  A.toCharArray();
+		 b =  B.toCharArray();
+		 
+		 int random[] = new int[B.length()];
+		 int s = 0;
+		 
+		 for (int i = 0; i < B.length(); i++) {
+			 
+			 random[i] = rand.nextInt(100);
+			 
+		 }
+		
+		 for (int i = 0; i < B.length(); i++) {
+			 
+			 for (int j = 0; j < A.length(); j++) {
+				 
+				 if (b[i] == a[j]) {
+					 s = s + random[i] + j + 1;
+				 }
+				 
+			 }
+			 
+		 }
+		 
+		 System.out.print("Sirul rand este: " );
+		 System.out.println(Arrays.toString(random));
+		 
+		 if (s >= 100) {
+			 System.out.print("Suma este: " + s + "=> CRIPTARE VALIDA");
+		 } else {
+			 System.out.print("Suma este: " + s + "=> CRIPTARE NEVALIDA");
+		 }
+		 
+	 } 
+	
+}

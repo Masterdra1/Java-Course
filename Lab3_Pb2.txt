@@ -1,0 +1,24 @@
+import java.util.Arrays;
+import java.util.Scanner; 
+ 
+ import java.lang.String; 
+ 
+ public class Nou {    
+	
+	 public static void main(String args[])     
+	 {    
+		 Scanner scan=new Scanner(System.in);
+		 
+		int  a=0;
+		 String monthString =new String();
+		 monthString=scan.nextLine();
+		 char x[] = new char [monthString.length()],key='a';
+		 x = monthString.toCharArray();
+		for(int i=0;i<monthString.length();i++) {
+			if(x[i]==key)a++;
+		}
+		System.out.println("Caracterul a apare de:"+a+" ori.");
+		 }
+	 } 
+ 
+	  

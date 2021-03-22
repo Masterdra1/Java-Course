@@ -1,0 +1,36 @@
+import java.util.Arrays;
+import java.lang.Object;
+import java.lang.System;
+import java.util.Scanner; 
+ 
+ import java.lang.String; 
+ 
+ public class Nou {    
+	
+	 public static void bubble(int a[]) {
+		 boolean ok=false;
+		 int aux;
+		 do {
+			 ok=false;
+			 for(int i=0;i<a.length-1;i++) {
+				 aux=a[i];
+				 a[i]=a[i+1];
+				 a[i+1]=aux;
+				 ok=true;
+			 }
+		 }while(ok);
+	 }
+	 public static void main(String args[])     
+	 {    
+		 Scanner scan=new Scanner(System.in);
+		 int z[],n;
+		 n=scan.nextInt();
+		 z=new int[n];
+		 for(int i=0;i<n;i++)z[i]=scan.nextInt();
+		 scan.close();
+		 bubble(z);
+		 for(int i=0;i<n;i++)System.out.print(z[i]+" ");
+		 
+	 } 
+ 
+ }  

@@ -1,0 +1,45 @@
+
+import java.util.Scanner; 
+ 
+ import java.lang.String; 
+ 
+ public class Nou {    
+	
+	 public static void main(String args[])     
+	 {    
+		 Scanner scan=new Scanner(System.in);
+		 
+		 int a=0;
+		 String monthString =new String();
+		 monthString=scan.next();
+		 switch(monthString) {
+		 case "Ianuarie":  a = 1;
+         break;
+		 case "Februarie":  a  = 2;
+         break;
+		 case "Martie":  a  = 3;
+         break;
+		 case "Aprilie": a  = 4;
+         break;
+		 case "Mai":  a = 5;
+         break;
+		 case "Junie":  a = 6;
+         break;
+		 case "Julie":  a = 7;
+         break;
+		 case "August":  a = 8;
+         break;
+		 case "Septembrie":  a = 9;
+         break;
+		 case "Octombrie": a = 10;
+         break;
+		 case "Noiembrie": a = 11;
+         break;
+		 case "Decembrie": a = 12;
+         break;
+		 }
+		 System.out.println("Luna scrisa este:"+ a);
+		 }
+	 } 
+ 
+	  

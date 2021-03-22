@@ -1,0 +1,22 @@
+import java.util.Arrays;
+import java.lang.Object;
+import java.lang.System;
+import java.util.Scanner; 
+ 
+ import java.lang.String; 
+ 
+ public class Nou {    
+	
+	 public static void main(String args[])     
+	 {    
+		Scanner scan=new Scanner(System.in);
+		int a;
+		a= scan.nextInt();
+		System.out.println("Numarul in binar:"+Integer.toBinaryString(a));
+		System.out.println("Numarul in hexa:0X"+Integer.toHexString(a));
+		System.out.println("Numarul in octal:"+Integer.toOctalString(a));
+
+		 
+	 } 
+ 
+ }  
